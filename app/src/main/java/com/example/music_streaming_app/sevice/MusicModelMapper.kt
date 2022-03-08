@@ -8,3 +8,10 @@ fun MusicEntity.mapper(id: Long): MusicModel =
         streamUrl = streamUrl,
         coverUrl = coverUrl
     )
+
+fun MusicDto.mapper(): PlayerModel =
+    PlayerModel(
+        playMusicList = musics.mapIndexed { index, musicEntity ->
+            musicEntity.mapper(index.toLong())
+        }
+    )
