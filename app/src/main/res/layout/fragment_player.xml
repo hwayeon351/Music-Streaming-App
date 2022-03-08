@@ -5,6 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/playerViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="trackTextView, artistTextView, coverImageCardView, bottomBackgroundView, playerSeekBar, playTimeTextView, totalTimeTextView" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/playListViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="titleTextView, playListRecyclerView, playListSeekBar"/>
+
     <View
         android:id="@+id/topBackgroundView"
         android:layout_width="0dp"
@@ -66,6 +80,7 @@
         tools:text="대한민국" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/coverImageCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="36dp"
