@@ -108,9 +108,10 @@ class PlayerFragment: Fragment(R.layout.fragment_player) {
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 super.onMediaItemTransition(mediaItem, reason)
 
-                //val newIndex = mediaItem?.mediaId ?: return
-                //model.currentPosition = newIndex.toInt()
-                //playListAdapter.submitList(model.getAdapterModels())
+                val newIndex = mediaItem?.mediaId ?: return
+                model.currentPosition = newIndex.toInt()
+                updatePlayerView(model.getCurrentMusicModel())
+                playListAdapter.submitList(model.getAdapterModels())
             }
 
             override fun onPlaybackStateChanged(state: Int) {
@@ -194,8 +195,6 @@ class PlayerFragment: Fragment(R.layout.fragment_player) {
 
     private fun playMusic(musicModel: MusicModel) {
         model.updateCurrentPosition(musicModel)
-        updatePlayerView(model.getCurrentMusicModel())
-        playListAdapter.submitList(model.getAdapterModels())
         player?.seekTo(model.currentPosition, 0)
         player?.play()
     }
